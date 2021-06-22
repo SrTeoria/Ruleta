@@ -5,12 +5,10 @@ const betSchema = new Schema({
     type: Number,
     min: 0,
     max: 36,
-    required: true,
   },
   color: {
     type: String,
     enum: ['rojo', 'negro'],
-    required: true,
   },
   roulette: {
     type: Schema.Types.ObjectId,
