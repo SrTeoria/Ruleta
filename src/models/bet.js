@@ -1,5 +1,4 @@
 const { model, Schema } = require('mongoose')
-
 const betSchema = new Schema({
   number: {
     type: Number,
@@ -26,7 +25,5 @@ const betSchema = new Schema({
     required: true,
   }
 })
-
 const Bet = model('Bet', betSchema)
-
 module.exports = Bet

@@ -4,13 +4,10 @@ const { connect } = require('./db')
 const router = require('express').Router()
 const Roulette = require('./models/roulette')
 const Bet = require('./models/bet')
-
 const port = process.env.PORT
 const app = express()
 connect()
-
 app.use(express.json())
-
 router.route('/roulette/create').post(async (request, response) => {
   try{
     const roulette = await Roulette.create({})
@@ -108,9 +105,7 @@ router.route('/roulette/list').get(async (request, response) => {
     response.status(400).json({message: 'No se pudo encontrar apuestas'})
   }
 })
-
 app.use(router)
-
 app.listen(port, () =>{
   console.log(`App running at http://localhost:${port}`)
 })
