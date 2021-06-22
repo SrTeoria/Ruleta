@@ -38,10 +38,9 @@ router.route('/roulette/close').put(async (request, response) => {
     if(winningNumberBet % 2 === 0){
       winnersByColor = bets
         .filter( el => el.color === 'rojo')
-        .map( ({_id, number, color, roulette, amount, user}) => {
+        .map( ({_id, color, roulette, amount, user}) => {
           let rObj = {
             _id: _id,
-            number: number,
             color: color,
             roulette: roulette,
             amount: amount * 1.8,
@@ -52,10 +51,9 @@ router.route('/roulette/close').put(async (request, response) => {
     } else {
       winnersByColor = bets
         .filter( el => el.color === 'negro')
-        .map(({_id, number, color, roulette, amount, user}) => {
+        .map(({_id, color, roulette, amount, user}) => {
           let rObj = {
             _id: _id,
-            number: number,
             color: color,
             roulette: roulette,
             amount: amount * 1.8,
@@ -66,11 +64,10 @@ router.route('/roulette/close').put(async (request, response) => {
     }
     const winnersByNumber = bets
       .filter( el => el.number === winningNumberBet )
-      .map( ({_id, number, color, roulette, amount, user}) => {
+      .map( ({_id, number, roulette, amount, user}) => {
         let rObj = {
           _id: _id,
           number: number,
-          color: color,
           roulette: roulette,
           amount: amount * 5,
           user: user
