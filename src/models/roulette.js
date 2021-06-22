@@ -3,7 +3,7 @@ const { model, Schema } = require('mongoose')
 const rouletteSchema = new Schema({
   open: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 })
 

@@ -5,6 +5,7 @@ function connect(){
   const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   }
 
   mongoose.connect(MongoURI, options)
