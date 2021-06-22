@@ -88,10 +88,14 @@ router.route('/bet').post(async (request, response) => {
     const { number, color, roulette, amount } = request.body
     const { user } = request.headers
     const rouletteData = await Roulette.findById(roulette)
-    if(rouletteData && rouletteData.open && (color || number)){
-      const bet = await Bet.create({ number, color, roulette, amount, user })
+    if(rouletteData && rouletteData.open && color ){
+      const bet = await Bet.create({ color, roulette, amount, user })
       response.status(201).json(bet)
-    } else {
+    } else if(rouletteData && rouletteData.open && number){
+      const bet = await Bet.create({ number, roulette, amount, user })
+      response.status(201).json(bet)
+    }
+    else {
       throw new Error('Ruleta cerrada')
     }
   }catch(error){
